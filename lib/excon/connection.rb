@@ -566,6 +566,7 @@ module Excon
           :path       => uri.scheme == UNIX ? uri.path : nil,
           :port       => uri.port,
           :scheme     => uri.scheme,
+          :headers    => @data.delete(:tls_proxy_headers)
         }
         if uri.password
           @data[:proxy][:password] = uri.password

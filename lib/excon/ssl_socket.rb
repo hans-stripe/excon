@@ -104,6 +104,12 @@ module Excon
 
         request += "Proxy-Connection: Keep-Alive#{Excon::CR_NL}"
 
+        if @data[:headers]
+          @data[:headers].each do |header, value|
+            request += "#{header}: #{value}#{Excon::CR_NL}"
+          end
+        end
+
         request += Excon::CR_NL
 
         # write out the proxy setup request
